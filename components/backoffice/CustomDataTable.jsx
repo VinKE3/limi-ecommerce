@@ -93,7 +93,7 @@ export default function CustomDataTable() {
                     </th>
                     <td className="px-6 py-4">{item.last_name}</td>
                     <td className="px-6 py-4">{item.email}</td>
-                    <td className="px-6 py-4">${item.gender}</td>
+                    <td className="px-6 py-4">{item.gender}</td>
                     <td className="px-6 py-4">
                       <a
                         href="#"

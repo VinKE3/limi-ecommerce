@@ -6,7 +6,7 @@ export default function Navbar() {
     <div
       className="flex items-center justify-between
      bg-slate-800 text-slate-50  h-16 px-8 py-4
-     fixed top-0 w-full left-60 right-0
+     fixed top-0 w-full left-60 right-0 pr-[20rem]
      "
     >
       {/* Icon */}
