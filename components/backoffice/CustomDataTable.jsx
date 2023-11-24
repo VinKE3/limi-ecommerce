@@ -17,10 +17,12 @@ export default function CustomDataTable() {
     setCurrentPage(page);
   }
   return (
-    <div className="">
-      <h2 className="text-xl font-bold mb-4">Recent Orders</h2>
+    <div className="mt-8">
+      <h2 className="text-xl font-bold mb-4 text-slate-800 dark:text-slate-50 px-4">
+        Recent Orders
+      </h2>
       {/*Table */}
-      <div className="p-8">
+      <div className="p-4">
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -108,7 +110,7 @@ export default function CustomDataTable() {
             </tbody>
           </table>
           <nav
-            className="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4"
+            className="flex items-center flex-column flex-wrap md:flex-row justify-between p-4"
             aria-label="Table navigation"
           >
             <span className="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">
@@ -139,7 +141,7 @@ export default function CustomDataTable() {
                       disabled={currentPage === i + 1}
                       className={
                         currentPage === i + 1
-                          ? "flex items-center justify-center px-3 h-8 leading-tight text-white bg-blue-600 border border-blue-600  hover:bg-blue-500 hover:text-white dark:bg-blue-600 dark:border-blue-600 dark:hover:bg-blue-500 dark:hover:text-white"
+                          ? "flex items-center justify-center px-3 h-8 leading-tight text-gray-50 bg-blue-600 border border-blue-600  hover:bg-blue-500 hover:text-white dark:bg-slate-100 dark:border-slate-500 dark:hover:bg-slate-100 dark:text-slate-600"
                           : "flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                       }
                     >

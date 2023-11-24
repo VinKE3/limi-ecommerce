@@ -107,7 +107,7 @@ export default function WeeklySalesChart() {
   const [chartToDisplay, setChartToDisplay] = useState(tabs[0].type);
 
   return (
-    <div className="dark:bg-slate-700 bg-white p-8 rounded-lg">
+    <div className="dark:bg-slate-700 bg-slate_50 p-8 rounded-lg shadow-xl">
       <h2 className="text-xl font-bold mb-4 text-slate-800 dark:text-slate-50">
         Weekly Sales Chart
       </h2>
@@ -127,7 +127,7 @@ export default function WeeklySalesChart() {
                     className={
                       chartToDisplay === tab.type
                         ? "inline-block p-4 text-orange-600  border-b-2 border-orange-600 rounded-t-lg active dark:text-orange-500 dark:border-orange-500"
-                        : "inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-300 hover:border-gray-100 dark:hover:text-gray-100"
+                        : "inline-block p-4 border-b-2 border-transparent rounded-t-lg text-slate-400 hover:text-gray-700 hover:border-gray-100 dark:hover:text-gray-100"
                     }
                   >
                     {tab.title}
