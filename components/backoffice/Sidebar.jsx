@@ -2,11 +2,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import logo from "@/public/logo-dark.svg";
+import logo from "@/public/logo.png";
 import {
   Boxes,
+  Building2,
   ChevronDown,
   ChevronRight,
+  CircleDollarSign,
   ExternalLink,
   LayoutGrid,
   LayoutList,
@@ -20,6 +22,7 @@ import {
   User,
   User2,
   UserSquare2,
+  Users,
   Warehouse,
 } from "lucide-react";
 import {
@@ -35,7 +38,7 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
   const sidebarLinks = [
     {
       title: "Customers",
-      icon: <User2 />,
+      icon: <Users />,
       href: "/dashboard/customers",
     },
     {
@@ -54,14 +57,24 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
       href: "/dashboard/orders",
     },
     {
-      title: "Staff",
+      title: "Our Staff",
       icon: <User />,
       href: "/dashboard/staff",
+    },
+    {
+      title: "Limi Commnuity",
+      icon: <Building2 />,
+      href: "/dashboard/community",
     },
     {
       title: "Settings",
       icon: <Settings />,
       href: "/dashboard/settings",
+    },
+    {
+      title: "Wallet",
+      icon: <CircleDollarSign />,
+      href: "/dashboard/wallet",
     },
     {
       title: "Online Store",
@@ -101,8 +114,8 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
     <div
       className={
         showSidebar
-          ? "sm:block mt-20 sm:mt-0 dark:bg-slate-700 bg-white space-y-6 w-64 h-screen dark:text-slate-50 text-slate-800 fixed top-0 left-0 shadow-md"
-          : "mt-20 sm:mt-0 hidden sm:block dark:bg-slate-700 bg-white space-y-6 w-64 h-screen  dark:text-slate-50 text-slate-800 fixed top-0 left-0 shadow-md"
+          ? "sm:block mt-20 sm:mt-0 dark:bg-slate-800 bg-white space-y-6 w-64 h-screen dark:text-slate-300 text-slate-800 fixed top-0 left-0 shadow-md overflow-y-scroll"
+          : "mt-20 sm:mt-0 hidden sm:block dark:bg-slate-800 bg-white space-y-6 w-64 h-screen  dark:text-slate-300 text-slate-800 fixed top-0 left-0 shadow-md overflow-y-scroll"
       }
     >
       <Link
