@@ -20,34 +20,36 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import ThemeSwitcherBtn from "../ThemeSwitcher";
+import Link from "next/link";
 
-export default function Navbar() {
+export default function Navbar({ showSidebar, setShowSidebar }) {
   return (
     <div
       className="flex items-center justify-between bg-white 
      dark:bg-slate-800 text-slate-50 h-20 py-8 
-     fixed top-0 w-full px-8 z-50 pr-[20rem]
+     fixed top-0 w-full px-8 z-50 sm:pr-[20rem]
      "
     >
+      <Link href={"/dashboard"} className="sm:hidden">
+        Limi
+      </Link>
       {/* Icon */}
-      <button className="text-lime-700 dark:text-lime-500">
+      <button
+        onClick={() => setShowSidebar(!showSidebar)}
+        className="text-lime-700 dark:text-lime-500"
+      >
         <AlignJustify />
       </button>
       {/* 3 icons */}
       <div className="flex space-x-3">
         <ThemeSwitcherBtn />
         <DropdownMenu>
-          <DropdownMenuTrigger>
-            <button
-              type="button"
-              className="relative inline-flex items-center p-3 text-sm font-medium text-center text-white bg-transparent rounded-lg"
-            >
-              <Bell className="text-lime-700 dark:text-lime-500" />
-              <span className="sr-only">Notifications</span>
-              <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500  rounded-full -top-0 end-6 ">
-                20
-              </div>
-            </button>
+          <DropdownMenuTrigger className="relative inline-flex items-center p-3 text-sm font-medium text-center text-white bg-transparent rounded-lg">
+            <Bell className="text-lime-700 dark:text-lime-500" />
+            <span className="sr-only">Notifications</span>
+            <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500  rounded-full -top-0 end-6 ">
+              20
+            </div>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="py-2 px-4 pr-8">
             <DropdownMenuLabel>Notifications</DropdownMenuLabel>
