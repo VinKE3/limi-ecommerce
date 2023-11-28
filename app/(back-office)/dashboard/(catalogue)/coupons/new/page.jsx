@@ -9,8 +9,7 @@ import { generateSlug } from "@/lib/generateSlug";
 import React, { useState } from "react";
 import { set, useForm } from "react-hook-form";
 
-export default function NewCategory() {
-  const [imageUrl, setImageUrl] = useState("");
+export default function NewCoupon() {
   const [loading, setLoading] = useState(false);
   const {
     register,
@@ -21,42 +20,44 @@ export default function NewCategory() {
   async function onSubmit(data) {
     const slug = generateSlug(data.title);
     data.slug = slug;
-    data.imageUrl = imageUrl;
     console.log(data);
     makePostRequest(setLoading, "api/categories", data, "Category", reset);
     setImageUrl("");
   }
   return (
     <div>
-      <FormHeader title="New Category" />
+      <FormHeader title="New Coupon" />
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-full max-w-4xl p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 mx-auto my-3"
       >
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
           <TextInput
-            label="Category Title"
+            label="Coupon Title"
             name="title"
             register={register}
             errors={errors}
           />
-          <TextareaInput
-            label="Category Description"
-            name="description"
+          <TextInput
+            label="Coupon Code"
+            name="couponCode"
             register={register}
             errors={errors}
+            className="w-full"
           />
-          <ImageInput
-            imageUrl={imageUrl}
-            setImageUrl={setImageUrl}
-            endpoint="categoryImageUploader"
-            label="Category Image"
+          <TextInput
+            label="Coupon Expiry Date"
+            name="couponExpiryDate"
+            type="date"
+            register={register}
+            errors={errors}
+            className="w-full"
           />
         </div>
         <SubmitButton
           isLoading={loading}
-          buttonTitle="Create Category"
-          loadingButtonTitle="Creating Category please wait..."
+          buttonTitle="Create Coupon"
+          loadingButtonTitle="Creating Coupon please wait..."
         />
       </form>
     </div>

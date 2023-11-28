@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+import { withUt } from "uploadthing/tw";
+export default withUt({
   darkMode: ["class"],
   content: [
     "./pages/**/*.{js,jsx}",
@@ -71,6 +72,6 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
+    plugins: [require("tailwindcss-animate"), require("@tailwindcss/forms")],
   },
-  plugins: [require("tailwindcss-animate"), require("@tailwindcss/forms")],
-};
+});
