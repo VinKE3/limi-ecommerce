@@ -1,6 +1,7 @@
 "use client";
 import FormHeader from "@/components/backoffice/FormHeader";
 import ImageInput from "@/components/formInputs/ImageInput";
+import SelectInput from "@/components/formInputs/SelectInput";
 import SubmitButton from "@/components/formInputs/SubmitButton";
 import TextareaInput from "@/components/formInputs/TextAreaInput";
 import TextInput from "@/components/formInputs/TextInput";
@@ -39,7 +40,15 @@ export default function NewCategory() {
             name="title"
             register={register}
             errors={errors}
+            className="w-full"
           />
+          {/* <SelectInput
+            label="Select Market"
+            name="title"
+            register={register}
+            errors={errors}
+            className="w-full"
+          /> */}
           <TextareaInput
             label="Category Description"
             name="description"

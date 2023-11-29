@@ -11,4 +11,16 @@ export const ourFileRouter = {
       console.log("file url", file.url, metadata);
       return { uploadedBy: "VinKe" };
     }),
+  bannerImageUploader: f({ image: { maxFileSize: "2MB" } })
+    // Set permissions and file types for this FileRoute
+    .onUploadComplete(async ({ metadata, file }) => {
+      console.log("file url", file.url, metadata);
+      return { uploadedBy: "VinKe" };
+    }),
+  marketLogoUploader: f({ image: { maxFileSize: "1MB" } })
+    // Set permissions and file types for this FileRoute
+    .onUploadComplete(async ({ metadata, file }) => {
+      console.log("file url", file.url, metadata);
+      return { uploadedBy: "VinKe" };
+    }),
 };
