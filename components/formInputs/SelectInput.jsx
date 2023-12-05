@@ -6,12 +6,13 @@ export default function SelectInput({
   register,
   className = "sm:col-span-2",
   options = [],
+  multiple = false,
 }) {
   return (
     <div className={className}>
       <label
         htmlFor={name}
-        className="block text-sm font-medium leading-6 text-gray-900"
+        className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-50 mb-2"
       >
         {label}
       </label>
@@ -19,8 +20,9 @@ export default function SelectInput({
         <select
           {...register(`${name}`)}
           id={name}
+          multiple={multiple}
           name={name}
-          className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+          className="block w-full rounded-md border-0 py-3 text-slate-900 dark:text-slate-100 dark:bg-slate-800 bg-transparent p-1 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-lime-800 sm:max-w-xs sm:text-sm sm:leading-6"
         >
           {options.map((option, i) => {
             return (

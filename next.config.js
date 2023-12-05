@@ -2,6 +2,14 @@
 const nextConfig = {
   images: {
     domains: ["utfs.io"],
+    // remotePatterns: [
+    //   {
+    //     protocol: "https",
+    //     hostname: "example.com",
+    //     port: "",
+    //     pathname: "/account123/**",
+    //   },
+    // ],
   },
 };
 
