@@ -6,6 +6,7 @@ import SelectInput from "@/components/formInputs/SelectInput";
 import SubmitButton from "@/components/formInputs/SubmitButton";
 import TextareaInput from "@/components/formInputs/TextAreaInput";
 import TextInput from "@/components/formInputs/TextInput";
+import ToggleInput from "@/components/formInputs/ToggleInput";
 import { makePostRequest } from "@/lib/apiRequest";
 import { generateSlug } from "@/lib/generateSlug";
 import { Plus, X } from "lucide-react";
@@ -63,9 +64,15 @@ export default function NewProduct() {
   const {
     register,
     reset,
+    watch,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      isActive: true,
+    },
+  });
+  const isActive = watch("isActive");
   async function onSubmit(data) {
     const slug = generateSlug(data.title);
     data.slug = slug;
@@ -152,6 +159,13 @@ export default function NewProduct() {
             name="description"
             register={register}
             errors={errors}
+          />
+          <ToggleInput
+            label="Publish your Product"
+            name="isActive"
+            trueTitle="Active"
+            falseTitle="Draft"
+            register={register}
           />
         </div>
         <SubmitButton
