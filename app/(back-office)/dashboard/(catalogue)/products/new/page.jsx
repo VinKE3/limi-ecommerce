@@ -145,7 +145,7 @@ export default function NewProduct() {
             label="Product Image"
           />
 
-          <ArrayItemsInput setItems={setTags} items={tags} />
+          <ArrayItemsInput itemTitle="Tag" setItems={setTags} items={tags} />
 
           <TextareaInput
             label="Product Description"
