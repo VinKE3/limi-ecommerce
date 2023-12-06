@@ -3,6 +3,7 @@ import FormHeader from "@/components/backoffice/FormHeader";
 import SubmitButton from "@/components/formInputs/SubmitButton";
 import TextareaInput from "@/components/formInputs/TextAreaInput";
 import TextInput from "@/components/formInputs/TextInput";
+import ToggleInput from "@/components/formInputs/ToggleInput";
 import { makePostRequest } from "@/lib/apiRequest";
 import { generateCouponCode } from "@/lib/generateCouponCode";
 import { generateSlug } from "@/lib/generateSlug";
@@ -19,8 +20,12 @@ export default function NewFarmer() {
     watch,
     handleSubmit,
     formState: { errors },
-  } = useForm();
-
+  } = useForm({
+    defaultValues: {
+      isActive: true,
+    },
+  });
+  const isActive = watch("isActive");
   async function onSubmit(data) {
     const code = generateUserCode("LFF", data.name);
     data.code = code;
@@ -91,6 +96,13 @@ export default function NewFarmer() {
             register={register}
             errors={errors}
             isRequired={false}
+          />
+          <ToggleInput
+            label="Farmer Status"
+            name="isActive"
+            trueTitle="Active"
+            falseTitle="Draft"
+            register={register}
           />
         </div>
         <SubmitButton
