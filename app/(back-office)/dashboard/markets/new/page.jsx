@@ -5,12 +5,13 @@ import SubmitButton from "@/components/formInputs/SubmitButton";
 import TextareaInput from "@/components/formInputs/TextAreaInput";
 import TextInput from "@/components/formInputs/TextInput";
 import ToggleInput from "@/components/formInputs/ToggleInput";
-import { makePostRequest } from "@/lib/apiRequest";
+import { useMakePostRequest } from "@/lib/apiRequest";
 import { generateSlug } from "@/lib/generateSlug";
 import React, { useState } from "react";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 export default function NewMarket() {
+  const { makePostRequest } = useMakePostRequest();
   const [logoUrl, setLogoUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const {
@@ -30,7 +31,14 @@ export default function NewMarket() {
     data.slug = slug;
     data.logoUrl = logoUrl;
     console.log(data);
-    makePostRequest(setLoading, "api/markets", data, "Market", reset);
+    makePostRequest(
+      setLoading,
+      "api/markets",
+      data,
+      "Market",
+      reset,
+      "/dashboard/markets"
+    );
     setLogoUrl("");
   }
   return (

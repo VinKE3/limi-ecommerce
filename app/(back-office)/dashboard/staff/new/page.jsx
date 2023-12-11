@@ -4,12 +4,13 @@ import SubmitButton from "@/components/formInputs/SubmitButton";
 import TextareaInput from "@/components/formInputs/TextAreaInput";
 import TextInput from "@/components/formInputs/TextInput";
 import ToggleInput from "@/components/formInputs/ToggleInput";
-import { makePostRequest } from "@/lib/apiRequest";
+import { useMakePostRequest } from "@/lib/apiRequest";
 import { generateUserCode } from "@/lib/generateUserCode";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 export default function NewStaff() {
+  const { makePostRequest } = useMakePostRequest();
   const [loading, setLoading] = useState(false);
   const [couponCode, setCouponCode] = useState();
   const {
@@ -28,7 +29,14 @@ export default function NewStaff() {
     const code = generateUserCode("LSM", data.name);
     data.code = code;
     console.log(data);
-    makePostRequest(setLoading, "api/staffs", data, "Staff", reset);
+    makePostRequest(
+      setLoading,
+      "api/staffs",
+      data,
+      "Staff",
+      reset,
+      "/dashboard/staffs"
+    );
   }
   return (
     <div>

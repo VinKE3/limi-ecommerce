@@ -7,12 +7,13 @@ import SubmitButton from "@/components/formInputs/SubmitButton";
 import TextareaInput from "@/components/formInputs/TextAreaInput";
 import TextInput from "@/components/formInputs/TextInput";
 import ToggleInput from "@/components/formInputs/ToggleInput";
-import { makePostRequest } from "@/lib/apiRequest";
+import { useMakePostRequest } from "@/lib/apiRequest";
 import { generateSlug } from "@/lib/generateSlug";
 import React, { useState } from "react";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 export default function NewTraining() {
+  const { makePostRequest } = useMakePostRequest();
   const [imageUrl, setImageUrl] = useState("");
   const [content, setContent] = useState("");
   const categories = [
@@ -56,7 +57,14 @@ export default function NewTraining() {
     data.imageUrl = imageUrl;
     data.content = content;
     console.log(data);
-    makePostRequest(setLoading, "api/trainings", data, "Training", reset);
+    makePostRequest(
+      setLoading,
+      "api/trainings",
+      data,
+      "Training",
+      reset,
+      "/dashboard/trainings"
+    );
     setImageUrl("");
     setContent("");
   }

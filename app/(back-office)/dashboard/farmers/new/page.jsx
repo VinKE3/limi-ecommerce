@@ -4,14 +4,13 @@ import SubmitButton from "@/components/formInputs/SubmitButton";
 import TextareaInput from "@/components/formInputs/TextAreaInput";
 import TextInput from "@/components/formInputs/TextInput";
 import ToggleInput from "@/components/formInputs/ToggleInput";
-import { makePostRequest } from "@/lib/apiRequest";
-import { generateCouponCode } from "@/lib/generateCouponCode";
-import { generateSlug } from "@/lib/generateSlug";
+import { useMakePostRequest } from "@/lib/apiRequest";
 import { generateUserCode } from "@/lib/generateUserCode";
 import React, { useState } from "react";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 export default function NewFarmer() {
+  const { makePostRequest } = useMakePostRequest();
   const [loading, setLoading] = useState(false);
   const [couponCode, setCouponCode] = useState();
   const {
@@ -30,7 +29,14 @@ export default function NewFarmer() {
     const code = generateUserCode("LFF", data.name);
     data.code = code;
     console.log(data);
-    makePostRequest(setLoading, "api/farmers", data, "Farmer", reset);
+    makePostRequest(
+      setLoading,
+      "api/farmers",
+      data,
+      "Farmer",
+      reset,
+      "/dashboard/farmers"
+    );
   }
   return (
     <div>

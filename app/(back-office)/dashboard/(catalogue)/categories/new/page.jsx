@@ -6,12 +6,13 @@ import SubmitButton from "@/components/formInputs/SubmitButton";
 import TextareaInput from "@/components/formInputs/TextAreaInput";
 import TextInput from "@/components/formInputs/TextInput";
 import ToggleInput from "@/components/formInputs/ToggleInput";
-import { makePostRequest } from "@/lib/apiRequest";
+import { useMakePostRequest } from "@/lib/apiRequest";
 import { generateSlug } from "@/lib/generateSlug";
 import React, { useState } from "react";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 export default function NewCategory() {
+  const { makePostRequest } = useMakePostRequest();
   const [imageUrl, setImageUrl] = useState("");
   const markets = [
     {
@@ -53,7 +54,14 @@ export default function NewCategory() {
     data.slug = slug;
     data.imageUrl = imageUrl;
     console.log(data);
-    makePostRequest(setLoading, "api/categories", data, "Category", reset);
+    makePostRequest(
+      setLoading,
+      "api/categories",
+      data,
+      "Category",
+      reset,
+      "/dashboard/categories"
+    );
     setImageUrl("");
   }
   return (
