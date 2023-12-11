@@ -63,7 +63,7 @@ export default function NewTraining() {
       data,
       "Training",
       reset,
-      "/dashboard/trainings"
+      "/dashboard/community"
     );
     setImageUrl("");
     setContent("");
