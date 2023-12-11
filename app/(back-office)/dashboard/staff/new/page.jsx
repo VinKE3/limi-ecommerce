@@ -5,11 +5,9 @@ import TextareaInput from "@/components/formInputs/TextAreaInput";
 import TextInput from "@/components/formInputs/TextInput";
 import ToggleInput from "@/components/formInputs/ToggleInput";
 import { makePostRequest } from "@/lib/apiRequest";
-import { generateCouponCode } from "@/lib/generateCouponCode";
-import { generateSlug } from "@/lib/generateSlug";
 import { generateUserCode } from "@/lib/generateUserCode";
 import React, { useState } from "react";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 export default function NewStaff() {
   const [loading, setLoading] = useState(false);
@@ -27,10 +25,10 @@ export default function NewStaff() {
   });
   const isActive = watch("isActive");
   async function onSubmit(data) {
-    const code = generateUserCode("LFF", data.name);
+    const code = generateUserCode("LSM", data.name);
     data.code = code;
     console.log(data);
-    makePostRequest(setLoading, "api/staff", data, "Staff", reset);
+    makePostRequest(setLoading, "api/staffs", data, "Staff", reset);
   }
   return (
     <div>
@@ -45,6 +43,21 @@ export default function NewStaff() {
             name="name"
             register={register}
             errors={errors}
+          />
+          <TextInput
+            label="NIN (ID Number)"
+            name="nin"
+            register={register}
+            errors={errors}
+            className="w-full"
+          />
+          <TextInput
+            label="Date of Birth"
+            name="dob"
+            type="date"
+            register={register}
+            errors={errors}
+            className="w-full"
           />
           <TextInput
             label="Password"
@@ -83,6 +96,13 @@ export default function NewStaff() {
             register={register}
             errors={errors}
             isRequired={false}
+          />
+          <ToggleInput
+            label="Is Active?"
+            name="isActive"
+            trueTitle="Active"
+            falseTitle="Draft"
+            register={register}
           />
         </div>
         <SubmitButton

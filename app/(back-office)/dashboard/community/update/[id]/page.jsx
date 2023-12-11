@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function UpdateCategory() {
+export default function UpdateTraining() {
   return (
     <div>
-      <h2>Update Category</h2>
+      <h2>Update Training</h2>
     </div>
   );
 }

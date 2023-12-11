@@ -10,7 +10,7 @@ export default function page() {
     <div>
       {/*Header */}
       <PageHeader
-        heading="Limi Community"
+        heading="Limi Community Trainings"
         href="/dashboard/community/new"
         linkTitle="Add Training"
       />
