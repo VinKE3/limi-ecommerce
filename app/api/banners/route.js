@@ -26,3 +26,25 @@ export async function POST(req, res) {
     );
   }
 }
+
+export async function GET() {
+  try {
+    const banners = await db.banner.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+    return NextResponse.json(banners);
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json(
+      {
+        message: "Failed to get Banners",
+        error,
+      },
+      {
+        status: 500,
+      }
+    );
+  }
+}

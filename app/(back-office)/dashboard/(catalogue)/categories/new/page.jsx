@@ -14,28 +14,7 @@ import { useForm } from "react-hook-form";
 export default function NewCategory() {
   const { makePostRequest } = useMakePostRequest();
   const [imageUrl, setImageUrl] = useState("");
-  const markets = [
-    {
-      id: 1,
-      title: "Coca Cola",
-    },
-    {
-      id: 2,
-      title: "Pepsi",
-    },
-    {
-      id: 3,
-      title: "Fanta",
-    },
-    {
-      id: 4,
-      title: "Sprite",
-    },
-    {
-      id: 5,
-      title: "Redbull",
-    },
-  ];
+  // const markets = [];
   const [loading, setLoading] = useState(false);
   const {
     register,
@@ -77,17 +56,8 @@ export default function NewCategory() {
             name="title"
             register={register}
             errors={errors}
-            className="w-full"
           />
-          <SelectInput
-            label="Select Market"
-            name="title"
-            register={register}
-            errors={errors}
-            className="w-full"
-            options={markets}
-            multiple={false}
-          />
+
           <TextareaInput
             label="Category Description"
             name="description"

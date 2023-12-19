@@ -11,7 +11,9 @@ export async function POST(req, res) {
       notes,
       phone,
       phisycalAddres,
+      profileImageUrl,
       terms,
+      isActive,
     } = await req.json();
     const newFarmer = {
       code,
@@ -22,7 +24,9 @@ export async function POST(req, res) {
       notes,
       phone,
       phisycalAddres,
+      profileImageUrl,
       terms,
+      isActive,
     };
     console.log(newFarmer);
     return NextResponse.json(newFarmer);

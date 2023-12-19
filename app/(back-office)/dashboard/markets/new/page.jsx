@@ -1,6 +1,7 @@
 "use client";
 import FormHeader from "@/components/backoffice/FormHeader";
 import ImageInput from "@/components/formInputs/ImageInput";
+import SelectInput from "@/components/formInputs/SelectInput";
 import SubmitButton from "@/components/formInputs/SubmitButton";
 import TextareaInput from "@/components/formInputs/TextAreaInput";
 import TextInput from "@/components/formInputs/TextInput";
@@ -14,6 +15,20 @@ export default function NewMarket() {
   const { makePostRequest } = useMakePostRequest();
   const [logoUrl, setLogoUrl] = useState("");
   const [loading, setLoading] = useState(false);
+  const [categories, setCategories] = useState([
+    {
+      id: 1,
+      title: "Category 1",
+    },
+    {
+      id: 2,
+      title: "Category 2",
+    },
+    {
+      id: 3,
+      title: "Category 3",
+    },
+  ]);
   const {
     register,
     reset,
@@ -54,6 +69,15 @@ export default function NewMarket() {
             name="title"
             register={register}
             errors={errors}
+          />
+          <SelectInput
+            label="Select Categories"
+            name="categoryIds"
+            register={register}
+            errors={errors}
+            className="w-full"
+            options={categories}
+            multiple={true}
           />
           <ImageInput
             imageUrl={logoUrl}

@@ -1,5 +1,6 @@
 "use client";
 import FormHeader from "@/components/backoffice/FormHeader";
+import ImageInput from "@/components/formInputs/ImageInput";
 import SubmitButton from "@/components/formInputs/SubmitButton";
 import TextareaInput from "@/components/formInputs/TextAreaInput";
 import TextInput from "@/components/formInputs/TextInput";
@@ -90,11 +91,18 @@ export default function NewFarmer() {
             errors={errors}
             className="w-full"
           />
+          <ImageInput
+            imageUrl={logoUrl}
+            setImageUrl={setLogoUrl}
+            endpoint="farmerProfileUploader"
+            label="Farme Profile Image"
+          />
           <TextareaInput
             label="Farmer's Payment Terms"
             name="terms"
             register={register}
             errors={errors}
+            isRequired={false}
           />
           <TextareaInput
             label="Notes"
