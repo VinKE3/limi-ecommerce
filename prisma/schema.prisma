@@ -109,12 +109,13 @@ model User {
   id       String    @id @default(auto()) @map("_id") @db.ObjectId
   name          String?
   email         String?   @unique
+  password      String?
   emailVerified DateTime?
   products   Product[]
-  
   role          userRole      @default(USER)
 
   farmerProfile FarmerProfile ?
+
   createdAt  DateTime  @default(now())
   updatedAt  DateTime? @updatedAt
 }
@@ -132,8 +133,6 @@ model FarmerProfile {
   physicalAddress    String?
   terms    String?
   isActive   Boolean   @default(true)
-
-
 
   user User @relation(fields: [userId], references: [id])  
   userId String @unique @db.ObjectId

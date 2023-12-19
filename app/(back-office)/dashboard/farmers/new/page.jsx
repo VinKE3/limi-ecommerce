@@ -13,6 +13,7 @@ import { useForm } from "react-hook-form";
 export default function NewFarmer() {
   const { makePostRequest } = useMakePostRequest();
   const [loading, setLoading] = useState(false);
+  const [logoUrl, setLogoUrl] = useState();
   const [couponCode, setCouponCode] = useState();
   const {
     register,

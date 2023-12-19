@@ -11,6 +11,11 @@ export default function Home() {
           Go to Dashboard (Only Front)
         </button>
       </Link>
+      <Link href="/register-farmer">
+        <button className="mt-2 p-4 bg-slate-600 text-slate-50 rounded-full">
+          Go to Register
+        </button>
+      </Link>
     </div>
   );
 }
