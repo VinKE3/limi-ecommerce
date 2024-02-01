@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 import SubmitButton from "../formInputs/SubmitButton";
 import TextInput from "../formInputs/TextInput";
 
-export default function RegisterForm({ role }) {
+export default function RegisterForm({ role = "USER" }) {
   const router = useRouter();
   const {
     register,
@@ -39,7 +39,13 @@ export default function RegisterForm({ role }) {
         setLoading(false);
         toast.success("User Created Successfully");
         reset();
-        // router.push("/login");
+        //?if roles = user => home
+        //*if role = farmer => dashboard/farmers
+        if (role === "USER") {
+          router.push("/");
+        } else {
+          router.push(`/onboarding/${newUser.id}`);
+        }
       } else {
         setLoading(false);
         if (response.status === 409) {

@@ -9,12 +9,13 @@ import { useMakePostRequest } from "@/lib/apiRequest";
 import { generateUserCode } from "@/lib/generateUserCode";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import ArrayItemsInput from "../formInputs/ArrayItemsInput";
 
-export default function NewFarmerForm() {
+export default function NewFarmerForm({ user }) {
   const { makePostRequest } = useMakePostRequest();
   const [loading, setLoading] = useState(false);
-  const [logoUrl, setLogoUrl] = useState();
-  const [couponCode, setCouponCode] = useState();
+  const [profileImageUrl, setProfileImageUrl] = useState("");
+  const [products, setProducts] = useState([]);
   const {
     register,
     reset,
@@ -24,18 +25,22 @@ export default function NewFarmerForm() {
   } = useForm({
     defaultValues: {
       isActive: true,
+      ...user,
     },
   });
   const isActive = watch("isActive");
   async function onSubmit(data) {
     const code = generateUserCode("LFF", data.name);
     data.code = code;
+    data.userId = user.id;
+    data.products = products;
+    data.profileImageUrl = profileImageUrl;
     console.log(data);
     makePostRequest(
       setLoading,
       "api/farmers",
       data,
-      "Farmer",
+      "Farmer Profile",
       reset,
       "/dashboard/farmers"
     );
@@ -90,9 +95,30 @@ export default function NewFarmerForm() {
           errors={errors}
           className="w-full"
         />
+        <TextInput
+          label="What is the Size of your Land in Acres"
+          name="landSize"
+          type="number"
+          register={register}
+          errors={errors}
+          className="w-full"
+        />
+        <TextInput
+          label="What is your main Crop that you Cultivate?"
+          name="mainCrop"
+          type="text"
+          register={register}
+          errors={errors}
+          className="w-full"
+        />
+        <ArrayItemsInput
+          setItems={setProducts}
+          items={products}
+          itemTitle="Product"
+        />
         <ImageInput
-          imageUrl={logoUrl}
-          setImageUrl={setLogoUrl}
+          imageUrl={profileImageUrl}
+          setImageUrl={setProfileImageUrl}
           endpoint="farmerProfileUploader"
           label="Farme Profile Image"
         />
